@@ -25,8 +25,8 @@ Takumi Guard プロキシ経由で `uv sync` を実行すると `uv.lock` 内の
 
 ```console
 % sed -i '' \
-    -e 's|https://pypi.flatt.tech/files/packages/|https://files.pythonhosted.org/packages/|g' \
-    -e 's|https://pypi.flatt.tech/simple/|https://pypi.org/simple/|g' \
+    -e 's|https://pypi.flatt.tech/files/packages|https://files.pythonhosted.org/packages|g' \
+    -e 's|https://pypi.flatt.tech/simple|https://pypi.org/simple|g' \
     uv.lock
 ```
 
