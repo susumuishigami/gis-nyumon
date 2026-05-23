@@ -24,11 +24,13 @@
 Takumi Guard プロキシ経由で `uv sync` を実行すると `uv.lock` 内のURLが `pypi.flatt.tech` に書き換わる。ハッシュ検証が効くためコミットされたURLがプロキシである必要はなく、PyPI公式URLに戻しておくと差分レビューしやすい。コミット前に以下を実行する。
 
 ```console
-% sed -i '' \
-    -e 's|https://pypi.flatt.tech/files/packages|https://files.pythonhosted.org/packages|g' \
-    -e 's|https://pypi.flatt.tech/simple|https://pypi.org/simple|g' \
+% sed -E -i '' \
+    -e 's|https://pypi\.flatt\.tech/files/packages|https://files.pythonhosted.org/packages|g' \
+    -e 's|https://pypi\.flatt\.tech/simple/?|https://pypi.org/simple|g' \
     uv.lock
 ```
+
+`/simple/?` で末尾スラッシュの有無を吸収し、置換後は `https://pypi.org/simple`（末尾スラッシュなし）に揃える。これは `uv lock` がプロキシなしで生成する正規形と一致する。
 
 ## ノートブックをMarkdownとして書き出す
 
