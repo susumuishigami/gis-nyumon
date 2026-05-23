@@ -12,3 +12,8 @@ dependencies = [
     "requests>=2.32.5",
     "rioxarray>=0.20.0",
 ]
+
+[dependency-groups]
+dev = [
+    "nbconvert>=7.17.1",
+]
